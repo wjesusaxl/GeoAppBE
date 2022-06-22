@@ -1,6 +1,6 @@
 asgiref==3.5.2
 DateTime==4.4
-Django==4.0.5
+Django==3.9.0
 django-admin==2.0.1
 django-cors-headers==3.13.0
 django-excel-base==1.0.4
