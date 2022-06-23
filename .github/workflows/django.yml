@@ -45,3 +45,6 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "*"
         target: "/home/wjesusaxl/test"
+    - name: restart apache service
+      run: |
+        echo ${{ secrets.SERVER_SU_PASSWORD }} | sudo -S systemctl restart httpd
