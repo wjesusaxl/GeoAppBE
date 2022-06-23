@@ -7,5 +7,5 @@ urlpatterns = [
     path('', views.getRoutes),
     path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('getTesting/', views.getTest, name='getTest')
+    path('getTest/', views.getTest, name='getTest')
  ]
