@@ -50,7 +50,7 @@ jobs:
 
     needs: deploy
     runs-on: ubuntu-latest
-    name: Restart apache service
+    name: restart apache service
     
     steps:
     - name: executing remote ssh commands using password
