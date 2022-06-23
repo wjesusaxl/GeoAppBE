@@ -45,6 +45,19 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "*"
         target: "/home/wjesusaxl/test"
-    - name: restart apache service
-      run: |
-        echo ${{ secrets.SERVER_SU_PASSWORD }} | sudo -S systemctl restart httpd
+
+  restart-service:
+
+    needs: deploy
+    runs-on: ubuntu-latest
+    name: Restart apache service
+    
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: echo ${{ secrets.SERVER_SU_PASSWORD }} | sudo -S systemctl restart httpd
