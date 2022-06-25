@@ -28,7 +28,7 @@ def authenticate_user(request, token):
     return Response(decoded)
 
 @api_view(['GET'])
-def getTest(self,request):
+def getTest(request):
     content = {"test": "This is a test result"}
     return JsonResponse(content)
 
