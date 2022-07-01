@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user',
     'rest_framework',
     'corsheaders'
 ]
@@ -92,6 +93,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'user.User'
+
 ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [
@@ -121,7 +124,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'testPy',
         'USER': 'developer',
-        'PASSWORD': 'D3v3l@p3r',
+        # 'PASSWORD': 'D3v3l@p3r',
+        'PASSWORD': 'developer',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }
