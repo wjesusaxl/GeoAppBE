@@ -44,7 +44,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         source: "*"
-        target: "/home/wjesusaxl/test"
+        target: ${{ secrets.TARGET }}
 
   restart-service:
 
