@@ -139,5 +139,3 @@ GitHub.sublime-settings
 !.vscode/extensions.json 
 .history
  
-#Settings
-api/settings.py

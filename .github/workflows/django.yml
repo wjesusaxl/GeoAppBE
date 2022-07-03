@@ -61,3 +61,12 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: echo ${{ secrets.SERVER_SU_PASSWORD }} | sudo -S systemctl restart httpd
+
+    - name: updating configuration file
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: cp ${{ secrets.TARGET }}/conf/dev/settings.py ${{ secrets.TARGET }}/api/
