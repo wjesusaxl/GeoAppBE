@@ -123,9 +123,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'testPy',
-        # 'USER': 'developer',
+        'USER': 'developer',
         'PASSWORD': 'D3v3l@p3r',
-        'PASSWORD': 'developer',
+        # 'PASSWORD': 'developer',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }
@@ -168,9 +168,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/home/wjesusaxl/test/static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, '/home/weabpp/test/static'),
+# )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
