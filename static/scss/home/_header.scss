@@ -1,0 +1,10 @@
+.container header.title{
+    width: 100%;
+    background-color: map-get($color, gray0);
+    padding: .5rem 1rem;
+    h1{
+        color: #FFF;
+        -webkit-textfill-color: #FFF;
+        font-weight: 300;
+    }
+}

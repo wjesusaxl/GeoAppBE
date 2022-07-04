@@ -1,0 +1,8 @@
+div.container.main section.loading-container {
+    grid-column-gap: 5rem;
+    display: grid;
+    grid-template-columns: auto;
+    margin: 1rem 0;
+    grid-template-columns: 1fr 2.5fr;
+    grid-row-gap: 1rem;
+}

@@ -1,0 +1,8 @@
+.container.main section.loading-container .model-container{
+    display: grid;
+    grid-template-columns: auto;
+    border: solid 5px map-get($color, gray0);
+    grid-row: 1;
+    padding: 1rem;
+    grid-row-gap: 1rem;
+}

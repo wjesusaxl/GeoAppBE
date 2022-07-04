@@ -1,0 +1,105 @@
+.container {
+  display: grid;
+  grid-template-columns: auto; }
+  .container.main {
+    padding: 1rem; }
+
+.container header.title {
+  width: 100%;
+  background-color: #555555;
+  padding: .5rem 1rem; }
+  .container header.title h1 {
+    color: #FFF;
+    -webkit-textfill-color: #FFF;
+    font-weight: 300; }
+
+div.container.main section.loading-container {
+  grid-column-gap: 5rem;
+  display: grid;
+  grid-template-columns: auto;
+  margin: 1rem 0;
+  grid-template-columns: 1fr 2.5fr;
+  grid-row-gap: 1rem; }
+
+.container.main section.loading-container .model-container {
+  display: grid;
+  grid-template-columns: auto;
+  border: solid 5px #555555;
+  grid-row: 1;
+  padding: 1rem;
+  grid-row-gap: 1rem; }
+
+div.container.main section.loading-container .model-container .title h2 {
+  color: #555555;
+  -webkit-textfill-color: #555555; }
+
+.container.main section.loading-container .model-container .model-list {
+  display: grid;
+  grid-template-columns: auto; }
+
+.container.main section.loading-container .model-container .model-list .model {
+  display: grid;
+  align-content: space-between;
+  width: 100%;
+  grid-template-columns: auto auto; }
+  .container.main section.loading-container .model-container .model-list .model span {
+    display: block; }
+  .container.main section.loading-container .model-container .model-list .model label {
+    display: block; }
+    .container.main section.loading-container .model-container .model-list .model label svg.check {
+      display: block;
+      height: 1.5rem;
+      margin-left: auto; }
+      .container.main section.loading-container .model-container .model-list .model label svg.check path {
+        fill: #333; }
+        .container.main section.loading-container .model-container .model-list .model label svg.check path.check-fill {
+          fill: #FFF;
+          transition: all .3s ease-in-out; }
+      .container.main section.loading-container .model-container .model-list .model label svg.check:hover {
+        cursor: pointer; }
+  .container.main section.loading-container .model-container .model-list .model input.check-model {
+    display: none; }
+    .container.main section.loading-container .model-container .model-list .model input.check-model:checked ~ label svg.check path.check-fill {
+      fill: #333;
+      transition: all .5s ease-in-out; }
+
+div.container.main section.loading-container .action-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  grid-row: 2;
+  width: 100%; }
+
+div.container.main section.loading-container .action-list .action {
+  display: grid;
+  grid-template-columns: auto;
+  background: #555555;
+  padding: .5rem 1rem;
+  width: fit-content;
+  max-width: 7.5rem;
+  transition: all .3s ease-in-out; }
+  div.container.main section.loading-container .action-list .action span {
+    color: #fff;
+    -webkit-textfill-color: #FFF;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all .3s ease-in-out; }
+  div.container.main section.loading-container .action-list .action:hover {
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    background-color: #333; }
+    div.container.main section.loading-container .action-list .action:hover span {
+      transition: all .25s ease-in-out;
+      color: #DC6016;
+      -webkit-text-fill-color: #DC6016;
+      font-weight: 500; }
+
+.container.main section.loading-container .result {
+  display: grid;
+  grid-template-columns: auto;
+  border: solid 5px #555555;
+  grid-row: 1/ spam 2;
+  padding: 1rem; }
+
+/*# sourceMappingURL=home.css.map */

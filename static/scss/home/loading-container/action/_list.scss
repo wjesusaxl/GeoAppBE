@@ -1,0 +1,8 @@
+div.container.main section.loading-container .action-list{
+    display: flex;
+    // grid-template-columns: repeat(auto-fill, 8.5rem);
+    flex-direction: row;
+    justify-content: space-between;
+    grid-row: 2;
+    width: 100%;
+}

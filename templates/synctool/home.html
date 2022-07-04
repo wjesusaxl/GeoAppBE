@@ -1,0 +1,14 @@
+{% extends 'synctool/base.html' %}
+{% load static %}
+{% block body %}
+
+<link rel="stylesheet" href="{%static 'css/home.css' %}">
+<div class="container main">
+    <header class="title">
+        <h1>Sync Tool v1.0</h1>
+    </header>
+
+    {% include 'synctool/loading-container.html' with models=models %}
+    {% endblock %}
+
+</div>

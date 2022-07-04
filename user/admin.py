@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User
+from .models import User, Company
 from .forms import CustomUserCreationForm
 from django.contrib.auth.admin import UserAdmin
 
@@ -8,17 +8,6 @@ from django.contrib.auth.admin import UserAdmin
 class CustomUserAdmin(UserAdmin):
     model = User
     add_form = CustomUserCreationForm
-    # fieldsets = (
-    #     *UserAdmin.fieldsets,
-    #     (
-    #         'Other Personal info',
-    #         {
-    #             'fields': (
-    #                 'mobile',
-    #             )
-    #         }
-    #     )
-    # )
 
     fieldsets = (
         (
@@ -35,6 +24,7 @@ class CustomUserAdmin(UserAdmin):
                     'is_superuser',
                     'groups',
                     'user_permissions',
+                    'company'
                     # 'password',
                 )
             },
@@ -42,3 +32,4 @@ class CustomUserAdmin(UserAdmin):
     )
 
 admin.site.register(User, CustomUserAdmin)
+admin.site.register(Company)

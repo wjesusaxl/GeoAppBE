@@ -1,0 +1,7 @@
+.container{
+    display: grid;
+    grid-template-columns: auto;
+    &.main{
+        padding: 1rem;
+    }
+}

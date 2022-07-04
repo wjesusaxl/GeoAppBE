@@ -24,5 +24,6 @@ urlpatterns = [
     path('favicon.ico', okay),
     path('admin/', admin.site.urls),
     path('', include('api.api.urls')),
-    path('user/', include('user.urls'))
+    path('user/', include('user.urls')),
+    path('synctool/', include('synctool.urls'))
 ]

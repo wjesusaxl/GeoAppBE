@@ -69,4 +69,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: cp ${{ secrets.TARGET }}/conf/dev/settings.py ${{ secrets.TARGET }}/api/
+        script: cp ${{ secrets.TARGET }}/conf/dev.settings.py ${{ secrets.TARGET }}/api/

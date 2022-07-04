@@ -1,0 +1,27 @@
+<section class="loading-container">
+    
+    <div class="model-container">
+        <div class="title">
+            <h2>Models:</h2>
+        </div>
+        <div class="model-list">
+            {%for m in models %}
+            {%include 'synctool/model.html' with m=m %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="action-list">
+        <div class="action" id="run">
+            <span>Select All</span>
+        </div>
+        <div class="action" id="clear">
+            <span>Clear Selction</span>
+        </div>
+        <div class="action" id="run">
+            <span>Run Process</span>
+        </div>
+    </div>
+    <div class="result">
+
+    </div>
+</section>

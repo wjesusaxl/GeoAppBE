@@ -1,0 +1,7 @@
+.container.main section.loading-container .result{
+    display: grid;
+    grid-template-columns: auto;
+    border: solid 5px map-get($color, gray0);
+    grid-row: 1/ spam 2;
+    padding: 1rem;
+}

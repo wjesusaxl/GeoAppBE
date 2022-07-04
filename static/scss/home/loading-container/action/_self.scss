@@ -1,0 +1,28 @@
+div.container.main section.loading-container .action-list .action{
+    display: grid;
+    grid-template-columns: auto;
+    background: map-get($color, gray0);
+    padding: .5rem 1rem;
+    width: fit-content;
+    max-width: 7.5rem;
+    transition: all .3s ease-in-out;
+    span{
+        color: #fff;
+        -webkit-textfill-color: #FFF;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: center;
+        transition: all .3s ease-in-out;
+    }
+    &:hover{
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+        background-color: map-get($color, gray1);
+        span{
+            transition: all .25s ease-in-out;
+            color: map-get($color, orange);
+            -webkit-text-fill-color: map-get($color, orange);
+            font-weight: 500;
+        }
+    }
+}
