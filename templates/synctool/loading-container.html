@@ -1,6 +1,7 @@
+{% load static %}
 <section class="loading-container">
-    
     <div class="model-container">
+        {% csrf_token %}
         <div class="title">
             <h2>Models:</h2>
         </div>
@@ -11,17 +12,22 @@
         </div>
     </div>
     <div class="action-list">
-        <div class="action" id="run">
+        <div class="action" id="btn-select-all" onclick="SetStatus4All(true)">
             <span>Select All</span>
         </div>
-        <div class="action" id="clear">
+        <div class="action" id="btn-clear" onclick="SetStatus4All(false)">
             <span>Clear Selction</span>
         </div>
-        <div class="action" id="run">
+        <div class="action" id="btn-run">
             <span>Run Process</span>
         </div>
     </div>
     <div class="result">
-
+        <textarea class="box" name="process-result" cols="30" rows="10" id="process-result" readonly></textarea>
     </div>
 </section>
+<script type="text/javascript">
+    var domain = "{{domain}}";
+</script>
+<script type="text/javascript" src="{% static 'js/synctool/sync.js' %}"></script>
+

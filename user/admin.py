@@ -24,12 +24,13 @@ class CustomUserAdmin(UserAdmin):
                     'is_superuser',
                     'groups',
                     'user_permissions',
-                    'company'
+                    # 'company'
                     # 'password',
+                    'external_id'
                 )
             },
         ),
     )
 
 admin.site.register(User, CustomUserAdmin)
-admin.site.register(Company)
+# admin.site.register(Company)

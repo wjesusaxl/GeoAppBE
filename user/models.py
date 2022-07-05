@@ -15,7 +15,7 @@ class Company(models.Model):
         return self.code + ' - ' + self.name
 
 class CustomUserManager(BaseUserManager):
-    def _create_user(self, email, username, password, first_name, last_name, mobile, **extra_fields):
+    def _create_user(self, email, username, password, first_name, last_name, mobile, external_id, **extra_fields):
         if not email:
             raise ValueError('Email must be provided')
         if not password:
@@ -27,6 +27,7 @@ class CustomUserManager(BaseUserManager):
             first_name = first_name, 
             last_name = last_name,
             mobile = mobile,
+            external_id = external_id,
             **extra_fields 
         )
 
@@ -34,17 +35,17 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self.db)
         return user
     
-    def create_user(self, email, username, password, first_name, last_name, mobile, **extra_fields):
+    def create_user(self, email, username, password, first_name, last_name, mobile, external_id, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
         extra_fields.setdefault('is_superuser', False)
-        return self._create_user(email, username, password, first_name, last_name, mobile, **extra_fields)
+        return self._create_user(email, username, password, first_name, last_name, mobile, external_id, **extra_fields)
 
-    def create_superuser(self, email, username, password, first_name, last_name, mobile, **extra_fields):
+    def create_superuser(self, email, username, password, first_name, last_name, mobile, external_id, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
         extra_fields.setdefault('is_superuser', True)
-        return self._create_user(email, username, password, first_name, last_name, mobile, **extra_fields)
+        return self._create_user(email, username, password, first_name, last_name, mobile, external_id, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
 
@@ -58,7 +59,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
+    # company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
+    external_id = models.UUIDField(editable=True, null=True, blank=True)
 
     objects = CustomUserManager()
 

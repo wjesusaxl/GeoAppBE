@@ -5,4 +5,6 @@ div.container.main section.loading-container .action-list{
     justify-content: space-between;
     grid-row: 2;
     width: 100%;
+    height: fit-content;
+    align-items: end;
 }

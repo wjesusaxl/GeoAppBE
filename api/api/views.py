@@ -1,9 +1,6 @@
-from django.contrib.auth.models import User
 
 # from django.contrib.auth import get_user_model
 # User = get_user_model
-
-from django.core.exceptions import ObjectDoesNotExist
 
 
 from django.http import JsonResponse
@@ -18,9 +15,9 @@ from .serializers import CustomTokenObtainPairSerializer
 
 
 from rest_framework.exceptions import AuthenticationFailed
-from rest_framework_simplejwt.views import TokenViewBase
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+# from rest_framework_simplejwt.views import TokenViewBase
+# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+# from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
 class InvalidUser(AuthenticationFailed):
     status_code = status.HTTP_406_NOT_ACCEPTABLE

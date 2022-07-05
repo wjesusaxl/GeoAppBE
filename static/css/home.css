@@ -14,24 +14,31 @@
     font-weight: 300; }
 
 div.container.main section.loading-container {
-  grid-column-gap: 5rem;
+  grid-column-gap: 2rem;
   display: grid;
   grid-template-columns: auto;
   margin: 1rem 0;
-  grid-template-columns: 1fr 2.5fr;
+  grid-template-columns: 27.5vw auto;
+  grid-template-rows: auto 3rem;
   grid-row-gap: 1rem; }
 
 .container.main section.loading-container .model-container {
   display: grid;
   grid-template-columns: auto;
+  grid-template-rows: 2rem auto;
   border: solid 5px #555555;
   grid-row: 1;
   padding: 1rem;
-  grid-row-gap: 1rem; }
+  grid-row-gap: 1rem;
+  height: 100%; }
 
-div.container.main section.loading-container .model-container .title h2 {
-  color: #555555;
-  -webkit-textfill-color: #555555; }
+div.container.main section.loading-container .model-container .title {
+  display: grid;
+  grid-template-columns: auto;
+  height: fit-content; }
+  div.container.main section.loading-container .model-container .title h2 {
+    color: #555555;
+    -webkit-textfill-color: #555555; }
 
 .container.main section.loading-container .model-container .model-list {
   display: grid;
@@ -68,7 +75,9 @@ div.container.main section.loading-container .action-list {
   flex-direction: row;
   justify-content: space-between;
   grid-row: 2;
-  width: 100%; }
+  width: 100%;
+  height: fit-content;
+  align-items: end; }
 
 div.container.main section.loading-container .action-list .action {
   display: grid;
@@ -77,7 +86,8 @@ div.container.main section.loading-container .action-list .action {
   padding: .5rem 1rem;
   width: fit-content;
   max-width: 7.5rem;
-  transition: all .3s ease-in-out; }
+  transition: all .3s ease-in-out;
+  height: fit-content; }
   div.container.main section.loading-container .action-list .action span {
     color: #fff;
     -webkit-textfill-color: #FFF;
@@ -100,6 +110,20 @@ div.container.main section.loading-container .action-list .action {
   grid-template-columns: auto;
   border: solid 5px #555555;
   grid-row: 1/ spam 2;
-  padding: 1rem; }
+  padding: .5rem;
+  min-height: 60vh; }
+
+.container.main section.loading-container .result textarea.box {
+  display: block;
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+  /*remove the resize handle on the bottom right*/
+  font-weight: 200;
+  border-color: rgba(255, 255, 255, 0); }
 
 /*# sourceMappingURL=home.css.map */
