@@ -58,24 +58,26 @@ class Entity(APIView):
         entity = kwargs.get('entity')
         action = kwargs.get('action')
 
-        conf = getConfigFile('api/url')
-        geodb = conf['geodb']
-        geodb['entity'] = entity
+        # conf = getConfigFile('api/url')
+        # geodb = conf['geodb']
+        # geodb['entity'] = entity
 
-        url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{geodb['dbKeyspace']}/{geodb['entity']}"
+        # url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{geodb['dbKeyspace']}/{geodb['entity']}"
 
         data = json.loads(request.body)
 
-        result = []
+        # result = []
 
-        for item in data:
-            response = requests.post(url, json=item, headers={"x-cassandra-token": f"{geodb['dbApplicationToken']}"})
-            status = response.status_code
-            result.append( {
-                "id": item["id"],
-                "status": status,
-                "response": json.loads(response.text)
-            })
+        # for item in data:
+        #     response = requests.post(url, json=item, headers={"x-cassandra-token": f"{geodb['dbApplicationToken']}"})
+        #     status = response.status_code
+        #     result.append( {
+        #         "id": item["id"],
+        #         "status": status,
+        #         "response": json.loads(response.text)
+        #     })
+
+        result = postData(entity, data)
 
         return JsonResponse(result, safe=False)
 
@@ -90,18 +92,18 @@ class Synchronization(APIView):
         if not models:
             raise ServiceUnavailable
 
-        if source == "local":            
+        if source == "local":
+            result = {}
             for m in models:
-                dataset = []
                 model = conf["local"][m]
                 appModel = apps.get_model(model["app"], m)
                 fields = model["fields"]
                 rawData = json.loads(serializers.serialize('json', appModel.objects.all()))
                 
-                dataset = FilterDataset(rawData, fields)
-                
+                data = FilterDataset(rawData, fields)
+                result[m] = postData(model["extModel"], data)
         
-        return JsonResponse(dataset, safe=False)
+        return JsonResponse(result, safe=False)
 
 
 @api_view(['GET'])
@@ -128,4 +130,19 @@ def FilterDataset(data, fields):
         dataset.append(o)
     return dataset
 
+def postData(entity, data):
+    conf = getConfigFile('api/url')
+    geodb = conf['geodb']
+    url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{geodb['dbKeyspace']}/{entity}"
+    result = []
 
+    for item in data:
+        response = requests.post(url, json=item, headers={"x-cassandra-token": f"{geodb['dbApplicationToken']}"})
+        status = response.status_code
+        result.append( {
+            "id": item["id"],
+            "status": status,
+            "response": json.loads(response.text)
+        })
+
+    return result

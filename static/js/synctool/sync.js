@@ -34,7 +34,7 @@ function SubmitProcess(data){
         method: 'POST',
         headers: {
             "X-CSRFToken": csrfToken,
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDAxNDgyLCJpYXQiOjE2NTY5OTc4ODIsImp0aSI6ImI2ZjFlNDY0MTIwMDQ5ZDJiYTU3YjIzZTAyYjlkNDBlIiwidXNlcl9pZCI6MX0.4SGM6c9Ql5zA57amZM6Bqw87H2TGG8U8kY-tWnHHfHM"
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDMyMjY5LCJpYXQiOjE2NTcwMjg2NjksImp0aSI6ImQ5ZWQ0ZTJjMTg3NDQ1ZTVhOGIyZjYyZGU1NmRlYjQ4IiwidXNlcl9pZCI6MX0.q5bqfwbJdw-erisNwR2wgjuWOmO9ulsVZqgYi1ZnjJc"
         },
         body: JSON.stringify(data),
         credentials: 'include'
@@ -53,7 +53,7 @@ function SubmitProcess(data){
         processResult.value += '\n['+ data["response"]["status"] + "] - " + data["response"]["statusText"] + ' -> ' + new Date().toLocaleDateString() + ' ' +  new Date().toLocaleTimeString() +'\nResult:\n' + JSON.stringify(data["result"]) + '\n';
     })
     .catch((error) => {
-        processResult.value += '\n'+ error['detail'];
+        processResult.value += '\n'+ error['detail'] + '\n';
     });     
 }
 
