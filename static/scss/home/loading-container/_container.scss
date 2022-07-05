@@ -1,8 +1,9 @@
 div.container.main section.loading-container {
-    grid-column-gap: 5rem;
+    grid-column-gap: 2rem;
     display: grid;
     grid-template-columns: auto;
     margin: 1rem 0;
-    grid-template-columns: 1fr 2.5fr;
+    grid-template-columns: 27.5vw auto;
+    grid-template-rows: auto 3rem;
     grid-row-gap: 1rem;
 }

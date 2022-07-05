@@ -3,5 +3,6 @@
     grid-template-columns: auto;
     border: solid 5px map-get($color, gray0);
     grid-row: 1/ spam 2;
-    padding: 1rem;
+    padding: .5rem;
+    min-height: 60vh;
 }

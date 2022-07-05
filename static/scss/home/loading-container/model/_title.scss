@@ -1,4 +1,7 @@
 div.container.main section.loading-container .model-container .title{
+    display: grid;
+    grid-template-columns: auto;
+    height: fit-content;
     h2{
         color: map-get($color, gray0);
         -webkit-textfill-color: map-get($color, gray0);

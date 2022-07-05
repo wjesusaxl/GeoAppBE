@@ -1,0 +1,16 @@
+.container.main section.loading-container .result textarea.box{
+    display: block;
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none; /*remove the resize handle on the bottom right*/
+    font-weight: 200;
+    
+    border-color: rgba(255, 255, 255, 0); 
+    
+}

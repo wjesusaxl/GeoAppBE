@@ -1,0 +1,14 @@
+{
+    "local":{
+        "User":{
+            "app": "user",
+            "extModel": "user",
+            "fields": {
+                "email": "email",
+                "username": "username",
+                "external_id": "id",
+                "is_active": "is_active"
+            }
+        }
+    }
+}
