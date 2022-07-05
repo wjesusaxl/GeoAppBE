@@ -1,7 +1,10 @@
 
+from django.core import serializers
 from django.http import JsonResponse
 
 from django.middleware.csrf import get_token
+
+from django.apps import apps
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -9,6 +12,7 @@ from rest_framework.views import APIView
 from rest_framework.exceptions import APIException
 
 from django.conf import settings
+
 import requests, os, json
 
 class ServiceUnavailable(APIException):
@@ -27,7 +31,7 @@ class Entity(APIView):
         entity = kwargs.get('entity')
         action = kwargs.get('action')
 
-        conf = getConfigFile()
+        conf = getConfigFile('api/url')
         geodb = conf['geodb']
         geodb['entity'] = entity
 
@@ -51,7 +55,6 @@ class Entity(APIView):
     permission_classes = (IsAuthenticated, )
     def post(self, request, *args, **kwargs):
         
-
         entity = kwargs.get('entity')
         action = kwargs.get('action')
 
@@ -80,10 +83,25 @@ class Synchronization(APIView):
     permission_classes = (IsAuthenticated, )
     def post(self, request, *args, **kwargs):
 
-        conf = getConfigFile('api/url')
+        conf = getConfigFile('enginedb/models')
+        models = json.loads(request.body)["models"]
 
+        source = kwargs.get("from")
+        if not models:
+            raise ServiceUnavailable
+
+        if source == "local":            
+            for m in models:
+                dataset = []
+                model = conf["local"][m]
+                appModel = apps.get_model(model["app"], m)
+                fields = model["fields"]
+                rawData = json.loads(serializers.serialize('json', appModel.objects.all()))
+                
+                dataset = FilterDataset(rawData, fields)
+                
         
-        return JsonResponse([kwargs.get("from"), kwargs.get("to")], safe=False)
+        return JsonResponse(dataset, safe=False)
 
 
 @api_view(['GET'])
@@ -94,14 +112,20 @@ def getCSRFToken(request):
     } 
     return JsonResponse(data)
 
-def getConfigFile(entry):
-    conf = {
-        'api/url': 'static/conf/api/url.json'
-    }
-    with open(os.path.join(settings.BASE_DIR, conf[entry])) as conf:
+def getConfigFile(entry):    
+    with open(os.path.join(settings.BASE_DIR, f"static/conf/{entry}.json")) as conf:
         conf = json.load(conf)
     
     return conf
-    
+
+def FilterDataset(data, fields):
+    dataset = []                
+    for r in data:
+        o = {}
+        row = r["fields"]
+        for f in fields:
+            o[fields[f]] = row[f]
+        dataset.append(o)
+    return dataset
 
 

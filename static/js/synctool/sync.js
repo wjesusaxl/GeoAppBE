@@ -26,7 +26,7 @@ function RunProcess(){
            models.push(m.value);
     })
 
-    SubmitProcess(models);
+    SubmitProcess({"models": models});
 }
 
 function SubmitProcess(data){
@@ -34,7 +34,7 @@ function SubmitProcess(data){
         method: 'POST',
         headers: {
             "X-CSRFToken": csrfToken,
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU2OTg5ODAzLCJpYXQiOjE2NTY5ODYyMDMsImp0aSI6IjViMTA3MDI1ZTRiYzRkMzRiMzUwZGNjNGM4OGUyMTA0IiwidXNlcl9pZCI6MX0.fZkQqwmU2EEvZ-YUlqVMHs8Pv8my_Mc0u960_FYkQwo"
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDAxNDgyLCJpYXQiOjE2NTY5OTc4ODIsImp0aSI6ImI2ZjFlNDY0MTIwMDQ5ZDJiYTU3YjIzZTAyYjlkNDBlIiwidXNlcl9pZCI6MX0.4SGM6c9Ql5zA57amZM6Bqw87H2TGG8U8kY-tWnHHfHM"
         },
         body: JSON.stringify(data),
         credentials: 'include'
