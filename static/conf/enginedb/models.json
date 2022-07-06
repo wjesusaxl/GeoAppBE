@@ -2,6 +2,7 @@
     "local":{
         "User":{
             "app": "user",
+            "ids": ["id"],
             "extModel": "user",
             "fields": {
                 "email": "email",
