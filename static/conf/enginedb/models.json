@@ -3,6 +3,7 @@
         "User":{
             "app": "user",
             "ids": ["id"],
+            "keyspace": "user",
             "extModel": "user",
             "fields": {
                 "email": "email",

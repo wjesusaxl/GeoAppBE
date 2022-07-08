@@ -28,6 +28,7 @@ class NotFound(APIException):
 class Entity(APIView):    
     permission_classes = (IsAuthenticated, )
     def get(self, request, *args, **kwargs):
+        keyspace = kwargs.get('keyspace')
         entity = kwargs.get('entity')
         action = kwargs.get('action')
 
@@ -35,7 +36,7 @@ class Entity(APIView):
         geodb = conf['geodb']
         geodb['entity'] = entity
 
-        url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{geodb['dbKeyspace']}/{geodb['entity']}/rows"
+        url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{keyspace}/{geodb['entity']}/rows"
 
         response = requests.get(url, headers={"x-cassandra-token": f"{geodb['dbApplicationToken']}"})
         
@@ -55,8 +56,10 @@ class Entity(APIView):
     permission_classes = (IsAuthenticated, )
     def post(self, request, *args, **kwargs):
         
+        keyspace = kwargs.ge('keyspace')
         entity = kwargs.get('entity')
-        action = kwargs.get('action')
+        id = kwargs.get('id')
+        action = request.POST.get("action")
 
         # conf = getConfigFile('api/url')
         # geodb = conf['geodb']
@@ -76,8 +79,10 @@ class Entity(APIView):
         #         "status": status,
         #         "response": json.loads(response.text)
         #     })
-
-        result = upsertData(entity, data)
+        if action == "only-update":
+            result = updateData(keyspace, entity, data, id)
+        else:
+            result = updateData(keyspace, entity, data)
 
         return JsonResponse(result, safe=False)
 
@@ -112,7 +117,7 @@ class Synchronization(APIView):
                 rawData = json.loads(serializers.serialize('json', appModel.objects.all()))
                 
                 data = FilterDataset(rawData, fields)
-                result[m] = postData(model["extModel"], data)
+                result[m] = upsertData(model["keyspace"], model["extModel"], data)
         
         return JsonResponse(result, safe=False)
 
@@ -141,10 +146,10 @@ def FilterDataset(data, fields):
         dataset.append(o)
     return dataset
 
-def upsertData(entity, data, onlyUpdate=False):
+def upsertData(keyspace, entity, data):
     conf = getConfigFile('api/url')
     geodb = conf['geodb']
-    url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{geodb['dbKeyspace']}/{entity}"
+    url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{keyspace}/{entity}"
     result = []
 
     for item in data:
@@ -158,14 +163,14 @@ def upsertData(entity, data, onlyUpdate=False):
 
     return result
 
-def putData(entity, data):
+def updateData(keyspace, entity, data, id):
     conf = getConfigFile('api/url')
     geodb = conf['geodb']
-    url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v1/keyspaces/${geodb['dbKeyspace']}/tables/{entity}/rows"
+    url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{keyspace}/{entity}/" + '/{id}'
     result = []
 
     for item in data:
-        response = requests.post(url, json=item, headers={"x-cassandra-token": f"{geodb['dbApplicationToken']}"})
+        response = requests.put(url, json=item, headers={"x-cassandra-token": f"{geodb['dbApplicationToken']}"})
         status = response.status_code
         result.append( {
             "id": item["id"],

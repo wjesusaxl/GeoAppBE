@@ -34,7 +34,7 @@ function SubmitProcess(data){
         method: 'POST',
         headers: {
             "X-CSRFToken": csrfToken,
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDQzMTA1LCJpYXQiOjE2NTcwMzk1MDUsImp0aSI6IjgyNDNjNGRhMDg3MzRhNTA5Zjc2MWI1ZDg2ZjM4MmFmIiwidXNlcl9pZCI6MX0.i3mMobfKovhB0zAeaA00lUW7TQvUYrjAWHFbD7bXxdM"
+            "Authorization": "Bearer " + authToken
         },
         body: JSON.stringify(data),
         credentials: 'include'

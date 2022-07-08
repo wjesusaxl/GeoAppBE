@@ -35,13 +35,13 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self.db)
         return user
     
-    def create_user(self, email, username, password, first_name, last_name, mobile, external_id, **extra_fields):
+    def create_user(self, email, username, password, first_name, last_name, mobile, external_id=uuid.uuid1(), **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(email, username, password, first_name, last_name, mobile, external_id, **extra_fields)
 
-    def create_superuser(self, email, username, password, first_name, last_name, mobile, external_id, **extra_fields):
+    def create_superuser(self, email, username, password, first_name, last_name, mobile, external_id=uuid.uuid1(), **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
         extra_fields.setdefault('is_superuser', True)

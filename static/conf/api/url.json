@@ -1,8 +1,10 @@
 {
     "geodb":{
-        "dbID": "709f9abc-2221-4676-887f-5f2b069ea35d",
+        "dbID": "a9924688-6b87-4540-80ac-e9cbcf94e4ff",
         "dbRegion": "us-east1",
-        "dbKeyspace": "geodb_dev",
-        "dbApplicationToken": "AstraCS:TzTcceRYpkMAFuqogFBLFHic:e0a1a024b94ee10c33a833580efb4d71e91148de0c4708089b8f075e0eaf8552"
+        "dbKeyspace": "user",
+        "dbApplicationToken": "AstraCS:UedExxLXhcdUjpcYaycuJGjZ:0f1c7378173bb0e299da11fa5480e3a2bd9db9d2c94bf929644085592a81840c",
+        "clientId": "UedExxLXhcdUjpcYaycuJGjZ",
+        "clientSecret": "nbJixp-MNL.B+xpyCWIefBMScK0AO,1ZRDbsGbZNwajXD5OBMIeb1wDS5RQdHPFWAS0Exi7DNxF,PFrC7XBpjSnUZPaqk7F26iT2Uw8nhpxw1k8o4Gd+Rpvm0mLOOPxZ"
     }
 }
