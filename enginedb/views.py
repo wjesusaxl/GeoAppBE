@@ -82,7 +82,7 @@ class Entity(APIView):
         if action == "only-update":
             result = updateData(keyspace, entity, data, id)
         else:
-            result = updateData(keyspace, entity, data)
+            result = upsertData(keyspace, entity, data)
 
         return JsonResponse(result, safe=False)
 
