@@ -1,6 +1,7 @@
+asgiref==3.5.2
 cryptography==37.0.0
 DateTime==4.4
-Django==3.2.13
+Django==4.0.6
 django-admin==2.0.1
 django-cors-headers==3.13.0
 django-excel-base==1.0.4
@@ -15,5 +16,6 @@ psutil==5.9.0
 PyJWT==2.4.0
 python-distutils-extra==2.39
 pytz==2022.1
+sqlparse==0.4.2
 typing-extensions==4.2.0
 virtualenv==20.11.0
