@@ -13,6 +13,8 @@ from rest_framework.exceptions import APIException
 
 from django.conf import settings
 
+from enginedb.classes.metadata import Metadata
+
 import requests, os, json
 
 class ServiceUnavailable(APIException):
@@ -120,6 +122,20 @@ class Synchronization(APIView):
                 result[m] = upsertData(model["keyspace"], model["extModel"], data)
         
         return JsonResponse(result, safe=False)
+
+class DataProvider(APIView):
+    permission_classes = (IsAuthenticated, )
+    def get(self, request, *args, **kwargs):
+        model = kwargs.get("model"),
+        view = kwargs.get("view")
+
+        conf = getConfigFile('api/url')
+        geodb = conf['geodb']
+
+        metadata = Metadata("enginedb/metadata", geodb["dbApplicationToken"])
+
+        conf = metadata.getContent(model, view)
+        return JsonResponse(conf, safe=False)
 
 
 @api_view(['GET'])
