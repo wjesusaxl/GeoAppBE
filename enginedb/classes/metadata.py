@@ -8,39 +8,18 @@ class ConfigurationException(Exception):
 class Metadata:
     modelViewConf = {}
     def __init__(self, confEntry, securityToken):
-        self.modelViewConf = self.getConfigFile(confEntry)
+        self.modelViewConf = self.GetConfigFile(confEntry)
         self.securityToken = securityToken
 
-    def getContent(self, model, view):
-
-        models2 = self.getSecondaryModels()
-        data = {
-            "models2": models2
-        }
-
-        return data
-
-    def getSecondaryModels(self):
+    def getContent(self, model, view, filters={}):
         data = {}
         entities = self.modelViewConf["entities"]
-        secondaryEntities = [e for e in entities if entities[e]["reference"] == "secondary"]
-        try:
-
-            if not secondaryEntities:
-                raise ConfigurationException()
-
-            for e in secondaryEntities:
-                entity = entities[e]
-                data[e] = self.GetDatabaseData(url=entity["apiUrl"])
-
-        except ConfigurationException as ex:
-            data = {
-                "message": ex
-            }
-
+        for e in entities:
+            data['main' if entities[e]['reference'] == 'main' else e] = self.GetDatabaseData(url=entities[e]["apiUrl"].format(**filters))
+            
         return data
 
-    def getConfigFile(self, entry):    
+    def GetConfigFile(self, entry):    
         with open(os.path.join(settings.BASE_DIR, f"static/conf/{entry}.json")) as conf:
             conf = json.load(conf)
         
@@ -51,6 +30,7 @@ class Metadata:
             'Content-Type': 'application/json',
             'x-cassandra-token': self.securityToken
         }
+        data = {}
         response = requests.get(url=url, headers=headers)
         if response.status_code == 200:
             data = json.loads(response.text)

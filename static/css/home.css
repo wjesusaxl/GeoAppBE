@@ -58,7 +58,7 @@ div.container.main section.loading-container .model-container .title {
       height: 1.5rem;
       margin-left: auto; }
       .container.main section.loading-container .model-container .model-list .model label svg.check path {
-        fill: #333; }
+        fill: #DC6016; }
         .container.main section.loading-container .model-container .model-list .model label svg.check path.check-fill {
           fill: #FFF;
           transition: all .3s ease-in-out; }
@@ -67,7 +67,7 @@ div.container.main section.loading-container .model-container .title {
   .container.main section.loading-container .model-container .model-list .model input.check-model {
     display: none; }
     .container.main section.loading-container .model-container .model-list .model input.check-model:checked ~ label svg.check path.check-fill {
-      fill: #333;
+      fill: #DC6016;
       transition: all .5s ease-in-out; }
 
 div.container.main section.loading-container .action-list {

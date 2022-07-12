@@ -133,8 +133,7 @@ class DataProvider(APIView):
         geodb = conf['geodb']
 
         metadata = Metadata("enginedb/metadata", geodb["dbApplicationToken"])
-
-        conf = metadata.getContent(model, view)
+        conf = metadata.getContent(model, view, dict(request.GET.items()))
         return JsonResponse(conf, safe=False)
 
 

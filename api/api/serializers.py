@@ -55,7 +55,7 @@ class CustomTokenObtainPairSerializer(TokenObtainSerializer):
                 
                 refresh = self.get_token(self.user)
                 result["data"] = {
-                    "id": objUser.id,
+                    "external_id": objUser.external_id,
                     "username": objUser.username,
                     'refresh' : str(refresh),
                     'access' : str(refresh.access_token)

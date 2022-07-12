@@ -13,7 +13,7 @@
             height: 1.5rem;
             margin-left: auto;
             path{
-                fill: map-get($color, gray1);
+                fill: map-get($color, orange);
                 &.check-fill{
                     fill: #FFF;
                     transition: all .3s ease-in-out;
@@ -31,7 +31,7 @@
             svg.check{
                 path{
                     &.check-fill{
-                        fill: map-get($color, gray1);
+                        fill: map-get($color, orange);
                         transition: all .5s ease-in-out;
                     }
                 }
