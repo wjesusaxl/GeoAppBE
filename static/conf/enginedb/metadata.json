@@ -3,13 +3,18 @@
         "user":{
             "type": "model",
             "reference": "main",
-            "apiUrl": "https://a9924688-6b87-4540-80ac-e9cbcf94e4ff-us-east1.apps.astra.datastax.com/api/rest/v2/keyspaces/user/user/{id}" 
+            "apiUrl": "https://a9924688-6b87-4540-80ac-e9cbcf94e4ff-us-east1.apps.astra.datastax.com/api/rest/v2/keyspaces/user/user/{id}"
         },
         "project": {
             "type": "model",
             "reference": "secondary",
             "apiUrl": "https://a9924688-6b87-4540-80ac-e9cbcf94e4ff-us-east1.apps.astra.datastax.com/api/rest/v2/keyspaces/library/project/rows"
-        }        
+        },
+        "company": {
+            "type": "model",
+            "reference": "secondary",
+            "apiUrl": "https://a9924688-6b87-4540-80ac-e9cbcf94e4ff-us-east1.apps.astra.datastax.com/api/rest/v2/keyspaces/library/company/rows"
+        }
     }, 
     "columns":{
         "id":{
@@ -27,7 +32,7 @@
             "format": "",
             "tooltip": ""
         },
-        "code":{
+        "projectCode":{
             "entity": "project",            
             "source": "code",
             "dataType": "string",
@@ -42,7 +47,7 @@
             "format": "",
             "tooltip": "project-code"
         },
-        "name":{
+        "projectName":{
             "entity": "project",            
             "source": "name",
             "dataType": "string",
@@ -71,10 +76,28 @@
             "format": "",
             "tooltip": "project-name",
             "value":"{location['longitude']},{location['latitude']}"
+        },
+        "companyName":{
+            "entity": "company",            
+            "source": "name",
+            "dataType": "string",
+            "isAppField": false,
+            
+            "value": "name",
+            "visible": true,
+            "label": "name",
+            "isRequired": true,
+            "minLength": "3",
+            "maxLength": "100",
+            "format": "",
+            "tooltip": "company-name"
         }
     },
-    "relationships":{
-        "type": "inner-join",
-        "condition": ["user.projects[i]=project.id"]
-    }
+    "relationships":
+    [
+        {
+            "type": "inner-join",
+            "condition": ["user.projects[i]=project.id"]
+        }
+    ]
 }

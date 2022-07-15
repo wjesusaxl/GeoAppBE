@@ -5,10 +5,12 @@
 
 @import 'home/loading-container/container';
 
-@import 'home/loading-container/model/container';
-@import 'home/loading-container/model/title';
-@import 'home/loading-container/model/list';
-@import 'home/loading-container/model/self';
+@import 'home/loading-container/task/container';
+@import 'home/loading-container/task/category';
+@import 'home/loading-container/task/title';
+@import 'home/loading-container/task/list';
+@import 'home/loading-container/task/self';
+@import 'home/loading-container/task/model';
 
 @import 'home/loading-container/action/list';
 @import 'home/loading-container/action/self';

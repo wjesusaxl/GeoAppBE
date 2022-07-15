@@ -7,17 +7,37 @@ class ConfigurationException(Exception):
 
 class Metadata:
     modelViewConf = {}
+    securityToken = ""
     def __init__(self, confEntry, securityToken):
         self.modelViewConf = self.GetConfigFile(confEntry)
         self.securityToken = securityToken
 
     def getContent(self, model, view, filters={}):
         data = {}
+        content = []
+
+        # Getting Main and Secondary model data
         entities = self.modelViewConf["entities"]
+        columns = self.modelViewConf["columns"]
+
+        mainEntity = [e for e in entities if entities[e]['reference'] == 'main'][0]
+        
         for e in entities:
             data['main' if entities[e]['reference'] == 'main' else e] = self.GetDatabaseData(url=entities[e]["apiUrl"].format(**filters))
+
+        # Adding joining functionality
+        # for r in data['main']:
+        #     row = {}
+        content = data
             
-        return data
+                
+            
+        return content
+
+    def GetValueFromModel(model, id):
+        value = ""
+        return value
+    
 
     def GetConfigFile(self, entry):    
         with open(os.path.join(settings.BASE_DIR, f"static/conf/{entry}.json")) as conf:
@@ -61,3 +81,7 @@ class Metadata:
 #        # Here we return the response to the client, regardless of whether
 #        # it was created in the try or the except block
 #        return JsonResponse({'message': msg}, status=status)
+
+
+
+

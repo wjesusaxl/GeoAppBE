@@ -1,4 +1,4 @@
-.container.main section.loading-container .model-container .model-list .model{
+.container.main section.loading-container .task-container .task-category .task-list .task{
     display: grid;
     align-content: space-between;
     width: 100%;
@@ -8,6 +8,9 @@
     }
     label{
         display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 0;
         svg.check{
             display: block;
             height: 1.5rem;
@@ -25,7 +28,7 @@
         }
     }
     
-    input.check-model{
+    input.check-task{
         display: none;
         &:checked ~ label{
             svg.check{

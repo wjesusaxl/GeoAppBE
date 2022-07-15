@@ -1,0 +1,12 @@
+[    
+    {
+        "label": "drop tables",
+        "code": "drop-tables",
+        "checked": true
+    },
+    {
+        "label": "drop data types",
+        "code": "drop-data-types",
+        "checked": true
+    }
+]

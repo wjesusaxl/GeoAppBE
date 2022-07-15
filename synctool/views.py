@@ -12,11 +12,12 @@ from enginedb.views import getConfigFile
 @login_required(login_url='/admin/')
 def Home(request):
 
-    domain = ( "https" if request.get_port() == "443" else "http") + "://" + request.get_host()
+    domain = ( "https" if request.get_port() == "443" else "http") + "://" + request.get_host()    
     data = {
-        "models": ['User'],
+        "models": getConfigFile("synctool/models"),
+        "tasks": getConfigFile("synctool/tasks"),
         "domain": domain,
-        "authToken": GetAuthToken(domain)
+        "authToken": GetAuthToken(domain)        
     }
     return render(request, "synctool/home.html", data)
 
@@ -44,6 +45,5 @@ def GetAuthToken(basePath):
 
 def getConfigFile(entry):    
     with open(os.path.join(settings.BASE_DIR, f"static/conf/{entry}.json")) as conf:
-        conf = json.load(conf)
-    
+        conf = json.load(conf)    
     return conf

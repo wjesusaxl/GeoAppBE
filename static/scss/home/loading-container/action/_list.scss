@@ -3,8 +3,10 @@ div.container.main section.loading-container .action-list{
     // grid-template-columns: repeat(auto-fill, 8.5rem);
     flex-direction: row;
     justify-content: space-between;
-    grid-row: 2;
-    width: 100%;
-    height: fit-content;
-    align-items: end;
+    // grid-row: 2;    
+    
+    justify-content: space-around;
+    // height: fit-content;
+    align-items: end;    
+
 }

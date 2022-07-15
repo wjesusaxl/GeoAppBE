@@ -1,0 +1,10 @@
+<div class="task">
+    <span>{{t.label|upper}}</span>
+    <input class="check-task" name="check-task" type="checkbox" id="task-{{t.code}}" value="{{t.code}}" {% if t.checked %} {{"checked"}} {% endif %} />
+    <label for="task-{{t.code}}">
+        <svg class="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315 315">
+            <path d="M0,0V315H315V0H0ZM268.48,268.48H46.52V46.53h221.96v221.95Z"/>
+            <path class="check-fill" d="M46.52,46.53v221.95h221.96V46.53H46.52Zm103.05,153.85l-23.14,20.83-53.5-59.43,23.14-20.83,32.57,36.19,92.6-83.35,20.82,23.14-92.59,83.34,.1,.11Z"/>
+        </svg>
+    </label>
+</div>

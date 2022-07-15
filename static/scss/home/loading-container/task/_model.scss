@@ -1,0 +1,43 @@
+.container.main section.loading-container .task-container .task-category .task-list .model{
+    display: grid;
+    align-content: space-between;
+    width: 100%;
+    grid-template-columns: auto auto;
+    span{
+        display: block;
+    }
+    label{
+        display: block;
+        svg.check{
+            display: block;
+            height: 1.5rem;
+            margin-left: auto;
+            path{
+                fill: map-get($color, orange);
+                &.check-fill{
+                    fill: #FFF;
+                    transition: all .3s ease-in-out;
+                }
+            }
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+    
+    input.check-model{
+        display: none;
+        &:checked ~ label{
+            svg.check{
+                path{
+                    &.check-fill{
+                        fill: map-get($color, orange);
+                        transition: all .5s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+
+    
+}
