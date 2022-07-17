@@ -8,9 +8,9 @@ class ConfigurationException(Exception):
 class Metadata:
     modelViewConf = {}
     securityToken = ""
-    def __init__(self, confEntry, securityToken):
-        self.modelViewConf = self.GetConfigFile(confEntry)
-        self.securityToken = securityToken
+    # def __init__(self):
+        # self.modelViewConf = self.__getConfigFile(confEntry)
+        # self.securityToken = securityToken
 
     def getContent(self, model, view, filters={}):
         data = {}
@@ -23,7 +23,7 @@ class Metadata:
         mainEntity = [e for e in entities if entities[e]['reference'] == 'main'][0]
         
         for e in entities:
-            data['main' if entities[e]['reference'] == 'main' else e] = self.GetDatabaseData(url=entities[e]["apiUrl"].format(**filters))
+            data['main' if entities[e]['reference'] == 'main' else e] = self.__getDatabaseData(url=entities[e]["apiUrl"].format(**filters))
 
         # Adding joining functionality
         # for r in data['main']:
@@ -34,18 +34,24 @@ class Metadata:
             
         return content
 
-    def GetValueFromModel(model, id):
+    
+    def getObjects(objectType, objectName="__all__"):
+        with open(os.path.join(settings.BASE_DIR, f"static/conf/synctool/metadata/{objectType}s.json")) as conf:
+            data = json.load(conf)        
+        return data if objectName=="__all__" else { objectName: data[objectName] }
+
+    def __getValueFromModel(model, id):
         value = ""
         return value
-    
 
-    def GetConfigFile(self, entry):    
+    
+    def __getConfigFile(self, entry):    
         with open(os.path.join(settings.BASE_DIR, f"static/conf/{entry}.json")) as conf:
             conf = json.load(conf)
         
         return conf
 
-    def GetDatabaseData(self, url, filters = None):
+    def __getDatabaseData(self, url, filters = None):
         headers = {
             'Content-Type': 'application/json',
             'x-cassandra-token': self.securityToken
@@ -58,6 +64,8 @@ class Metadata:
 
 
         return data
+
+    
 
 
 # def test_view (request):

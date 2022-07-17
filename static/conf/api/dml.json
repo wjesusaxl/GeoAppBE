@@ -1,0 +1,25 @@
+{
+    "v2":{
+        "apiBasePath": "https://{astraClusterId}-{astraRegion}.apps.astra.datastax.com/api/rest/v2/",
+        "dataType": {
+            "drop":{
+                "url": "schemas/keyspaces/{keyspace}/types/{name}",
+                "method": "DELETE"
+            },
+            "create": {
+                "url": "schemas/keyspaces/{keyspace}/types",
+                "method": "POST"
+            }
+        },
+        "table": {
+            "drop":{
+                "url": "schemas/keyspaces/{keyspace}/tables/{name}",                
+                "method": "DELETE"
+            },
+            "create": {
+                "url": "schemas/keyspaces/{keyspace}/tables",                
+                "method": "POST"
+            }
+        }
+    }    
+}

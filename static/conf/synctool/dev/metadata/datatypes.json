@@ -1,0 +1,80 @@
+{
+    "library.address": {
+        "keyspace": "library",
+        "name": "address",
+        "fields": [
+            {
+				"name": "country_code",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "city",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "zip_code",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "state",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "location",
+				"typeDefinition": "text"
+			}
+        ]
+    },
+    "library.app_fields": {
+        "keyspace": "library",
+        "name": "app_fields",
+        "fields": [
+			{
+				"name": "created_user_id",
+				"typeDefinition": "uuid"
+			},
+			{
+				"name": "created_datetime",
+				"typeDefinition": "timestamp"
+			},
+			{
+				"name": "modified_user_id",
+				"typeDefinition": "uuid"
+			},
+			{
+				"name": "modified_datetime",
+				"typeDefinition": "timestamp"
+			},
+			{
+				"name": "is_deleted",
+				"typeDefinition": "boolean"
+			}
+        ]
+    },
+    "user.app_fields": {
+        "keyspace": "user",
+        "name": "app_fields",
+        "fields": [
+			{
+				"name": "created_user_id",
+				"typeDefinition": "uuid"
+			},
+			{
+				"name": "created_datetime",
+				"typeDefinition": "timestamp"
+			},
+			{
+				"name": "modified_user_id",
+				"typeDefinition": "uuid"
+			},
+			{
+				"name": "modified_datetime",
+				"typeDefinition": "timestamp"
+			},
+			{
+				"name": "is_deleted",
+				"typeDefinition": "boolean"
+			}
+        ]
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "company": {        
+        "keyspace": "library",
+        "name": "company",        
+        "columnDefinitions": [
+            {
+                "name": "id",
+                "typeDefinition": "uuid"
+            },
+            {
+                "name": "code",
+                "typeDefinition": "text"
+            },
+            {
+                "name": "contact_name",
+                "typeDefinition": "text"
+            },
+            {
+                "name": "contact_phone_number",
+                "typeDefinition": "text"
+            },		
+            {
+                "name": "is_active",
+                "typeDefinition": "boolean"
+            },
+            {
+                "name": "name",
+                "typeDefinition": "text"
+            },
+            {
+                "name": "name",
+                "typeDefinition": "text"
+            },
+            {
+                "name": "main_address",
+                "typeDefinition": "address"
+            },
+            {
+                "name": "application_fields",
+                "typeDefinition": "app_fields"
+            }
+        ],
+        "primaryKey": {
+            "partitionKey": [
+                "id"
+            ]
+        },
+        "tableOptions": {
+            "defaultTimeToLive": 0
+        }
+    }
+}

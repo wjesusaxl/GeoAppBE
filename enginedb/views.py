@@ -1,5 +1,6 @@
 
 from django.core import serializers
+from django.db import connection
 from django.http import JsonResponse
 
 from django.middleware.csrf import get_token
@@ -13,9 +14,13 @@ from rest_framework.exceptions import APIException
 
 from django.conf import settings
 
-from enginedb.classes.metadata import Metadata
+from enginedb.classes.task import Task
+
+from .classes.metadata import Metadata
+from .classes.database import Connection
 
 import requests, os, json
+
 
 class ServiceUnavailable(APIException):
     status_code = 500
@@ -27,7 +32,11 @@ class NotFound(APIException):
     default_detail = 'Entity not found.'
     default_code = 'entity-not-found'
 
-class Entity(APIView):    
+class Entity(APIView):
+    connection = None
+    def __init__(self):
+        connection = Connection
+
     permission_classes = (IsAuthenticated, )
     def get(self, request, *args, **kwargs):
         keyspace = kwargs.get('keyspace')
@@ -82,19 +91,19 @@ class Entity(APIView):
         #         "response": json.loads(response.text)
         #     })
         if action == "only-update":
-            result = updateData(keyspace, entity, data, id)
+            result = self.connection.updateData(keyspace, entity, data, id)
         else:
-            result = upsertData(keyspace, entity, data)
+            result = connection.upsertData(keyspace, entity, data)
 
         return JsonResponse(result, safe=False)
 
     
     permission_classes = (IsAuthenticated, )
-    def put(sel, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
 
         entity = kwargs.get('entity')
         data = json.loads(request.body)
-        result = upsertData(entity, data, onlyUpdate=True)
+        result = self.connection.upsertData(entity, data, onlyUpdate=True)
 
         return JsonResponse(result, safe=False)
 
@@ -118,8 +127,8 @@ class Synchronization(APIView):
                 fields = model["fields"]
                 rawData = json.loads(serializers.serialize('json', appModel.objects.all()))
                 
-                data = FilterDataset(rawData, fields)
-                result[m] = upsertData(model["keyspace"], model["extModel"], data)
+                data = connection.filterDataset(rawData, fields)
+                result[m] = connection.upsertData(model["keyspace"], model["extModel"], data)
         
         return JsonResponse(result, safe=False)
 
@@ -136,6 +145,22 @@ class DataProvider(APIView):
         conf = metadata.getContent(model, view, dict(request.GET.items()))
         return JsonResponse(conf, safe=False)
 
+class TaskAPI(APIView):
+    permission_classes = (IsAuthenticated, )
+    def get(self, request, *args, **kwargs):
+        object = kwargs.get("object")
+        action = kwargs.get("action")
+        objectName = kwargs.get("objectName")
+
+        task = Task()        
+        body = task.Process(objectType=object, action=action, objectName=objectName)
+        # if (action + '-' + object) == 'drop-datatype':
+        #     result = conn.dropDataType(body['keyspace'])
+
+        
+
+        return JsonResponse(body, safe=False)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, ])
@@ -150,47 +175,3 @@ def getConfigFile(entry):
         conf = json.load(conf)
     
     return conf
-
-def FilterDataset(data, fields):
-    dataset = []                
-    for r in data:
-        o = {}
-        row = r["fields"]
-        for f in fields:
-            o[fields[f]] = row[f]
-        dataset.append(o)
-    return dataset
-
-def upsertData(keyspace, entity, data):
-    conf = getConfigFile('api/url')
-    geodb = conf['geodb']
-    url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{keyspace}/{entity}"
-    result = []
-
-    for item in data:
-        response = requests.post(url, json=item, headers={"x-cassandra-token": f"{geodb['dbApplicationToken']}"})
-        status = response.status_code
-        result.append( {
-            "id": item["id"],
-            "status": status,
-            "response": json.loads(response.text)
-        })
-
-    return result
-
-def updateData(keyspace, entity, data, id):
-    conf = getConfigFile('api/url')
-    geodb = conf['geodb']
-    url = f"https://{geodb['dbID']}-{geodb['dbRegion']}.apps.astra.datastax.com/api/rest/v2/keyspaces/{keyspace}/{entity}/" + '/{id}'
-    result = []
-
-    for item in data:
-        response = requests.put(url, json=item, headers={"x-cassandra-token": f"{geodb['dbApplicationToken']}"})
-        status = response.status_code
-        result.append( {
-            "id": item["id"],
-            "status": status,
-            "response": json.loads(response.text)
-        })
-
-    return result

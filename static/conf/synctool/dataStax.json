@@ -2,8 +2,8 @@
     "authUrl": "token/",
     "authUser": "admin@geoapp.solutions",
     "authPassword": "Geo@pp2022",
-    "clientId": "TzTcceRYpkMAFuqogFBLFHic",
-    "clientSecret": "_6ECsmyqfYnkCDyaELYs16KtjWW3s37F6n2DI+SZ_tv4WOoYjDjHyHfB4SIcstpFq9tsNRs7A2f95elF92BkPDlxxtZZ+ZiNhQwSLTd4fn92q-NXbRIezPqebQEjgBM2",
-    "secureConnectBundlePath": "./secure-connect-geodb.zip",
+    "clientId": "WhtXpPFTKdaoeNtHGgjOYZDU",
+    "clientSecret": "CK7rjcoZuj,KbnU1vf.4cWDIMEOIEv.nktWXbsuEhUPFp0rHIBATPsvIS2cbx_kQFDYsO0.orog88heOPb-u_dgmWxBTQBDb7,-ZrXl_ZCRoYRa8AnZs,hK371as87fq",
+    "secureConnectBundle": "secure-connect-geodb-dev.zip",
     "defaultDatabase": "geoapp_dev"
 }
