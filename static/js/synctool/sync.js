@@ -40,7 +40,7 @@ function SubmitProcess(data){
         credentials: 'include'
     }
 
-    APIurl = domain + "/enginedb/sync/local/geodb";
+    APIurl = domain + "/dbengine/sync/local/geodb";
 
     processResult.value += '[Start] -> ' + new Date().toLocaleDateString() + ' ' +  new Date().toLocaleTimeString() + '\n';
 

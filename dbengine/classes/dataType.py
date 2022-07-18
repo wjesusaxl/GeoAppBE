@@ -1,7 +1,7 @@
 import os, json
 from django.conf import settings
 
-from enginedb.classes.dbobject import DBObject
+from .dbobject import DBObject
 
 class DataType(DBObject):
     objectType = "dataType"

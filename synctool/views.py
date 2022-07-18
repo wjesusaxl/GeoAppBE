@@ -9,7 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.exceptions import APIException
 
-from enginedb.views import getConfigFile
+from dbengine.views import getConfigFile
 # from django.contrib.auth.decorators import permission_required
 
 # @permission_required('polls.add_choice', login_url='/loginpage/')

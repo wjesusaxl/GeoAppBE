@@ -14,7 +14,7 @@ from rest_framework.exceptions import APIException
 
 from django.conf import settings
 
-from enginedb.classes.task import Task
+from dbengine.classes.task import Task
 
 from .classes.metadata import Metadata
 from .classes.database import Connection
@@ -112,7 +112,7 @@ class Synchronization(APIView):
     permission_classes = (IsAuthenticated, )
     def post(self, request, *args, **kwargs):
 
-        conf = getConfigFile('enginedb/models')
+        conf = getConfigFile('engine/models')
         models = json.loads(request.body)["models"]
 
         source = kwargs.get("from")
@@ -141,7 +141,7 @@ class DataProvider(APIView):
         conf = getConfigFile('api/url')
         geodb = conf['geodb']
 
-        metadata = Metadata("enginedb/metadata", geodb["dbApplicationToken"])
+        metadata = Metadata("dbengine/metadata", geodb["dbApplicationToken"])
         conf = metadata.getContent(model, view, dict(request.GET.items()))
         return JsonResponse(conf, safe=False)
 

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EnginedbConfig(AppConfig):
+class DbengineConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'enginedb'
+    name = 'dbengine'

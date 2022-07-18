@@ -26,5 +26,5 @@ urlpatterns = [
     path('', include('api.api.urls')),
     path('user/', include('user.urls')),
     path('synctool/', include('synctool.urls')),
-    path('enginedb/', include('enginedb.urls')),
+    path('dbengine/', include('dbengine.urls')),
 ]
