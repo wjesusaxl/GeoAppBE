@@ -153,7 +153,7 @@ class TaskAPI(APIView):
         objectName = kwargs.get("objectName")
 
         task = Task()        
-        body = task.Process(objectType=object, action=action, objectName=objectName)
+        body = task.process(objectType=object, action=action, objectName=objectName)
         # if (action + '-' + object) == 'drop-datatype':
         #     result = conn.dropDataType(body['keyspace'])
 
@@ -175,3 +175,4 @@ def getConfigFile(entry):
         conf = json.load(conf)
     
     return conf
+

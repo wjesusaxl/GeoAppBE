@@ -20,7 +20,7 @@ def Home(request):
     domain = ( "https" if request.get_port() == "443" else "http") + "://" + request.get_host()    
     data = {
         "models": getConfigFile("synctool/metadata/models"),
-        "tasks": getConfigFile("synctool/tasks"),
+        "tasks": normalizeDict(getConfigFile("synctool/tasks")),
         "domain": domain,
         "authToken": GetAuthToken(domain)        
     }
@@ -47,6 +47,15 @@ def GetAuthToken(basePath):
         token = data["data"]["access"]    
     
     return token
+
+def normalizeDict(dict):    
+    result = []
+    for k in dict.keys():
+        item = dict[k]
+        if not "code" in item:
+            item["code"] = k
+            result.append(item)
+    return result
 
 def getConfigFile(entry):    
     with open(os.path.join(settings.BASE_DIR, f"static/conf/{entry}.json")) as conf:

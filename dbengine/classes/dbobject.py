@@ -70,7 +70,8 @@ class DBObject:
         if not statusCode == 201:            
             data["code"] = statusCode
             data["reason"] = response.reason
-            data["msg"] = response.text
+            data["msg"] = json.loads(response.text)
 
         return data
+
 
