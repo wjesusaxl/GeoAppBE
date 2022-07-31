@@ -14,4 +14,9 @@ Pillow==9.1.0
 PyJWT==2.4.0
 pytz==2022.1
 requests==2.27.1
+cassandra-driver==3.25.0
+django-pandas==0.6.6
+pandasql3==0.7.3
+PyMySQL==1.0.2
+Pillow==9.1.0
 ufw==0.36.1

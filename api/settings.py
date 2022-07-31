@@ -39,10 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'functional',
+    'metadata',    
+    'config',
+    'lib',
+    'drillhole',    
     'user',
+    'view',
     'synctool',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -97,6 +103,7 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = 'user.User'
 
 ROOT_URLCONF = 'api.urls'
+#ROOT_URLCONF = '../metadata.urls'
 
 TEMPLATES = [
     {
@@ -176,6 +183,7 @@ STATICFILES_DIRS = (
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
+#DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
