@@ -1,4 +1,4 @@
-.container.main section.loading-container .model-container .model-list .model{
+.container.main section.loading-container .task-container .task-category .task-list .task{
     display: grid;
     align-content: space-between;
     width: 100%;
@@ -8,12 +8,15 @@
     }
     label{
         display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 0;
         svg.check{
             display: block;
             height: 1.5rem;
             margin-left: auto;
             path{
-                fill: map-get($color, gray1);
+                fill: map-get($color, orange);
                 &.check-fill{
                     fill: #FFF;
                     transition: all .3s ease-in-out;
@@ -25,13 +28,13 @@
         }
     }
     
-    input.check-model{
+    input.check-task{
         display: none;
         &:checked ~ label{
             svg.check{
                 path{
                     &.check-fill{
-                        fill: map-get($color, gray1);
+                        fill: map-get($color, orange);
                         transition: all .5s ease-in-out;
                     }
                 }

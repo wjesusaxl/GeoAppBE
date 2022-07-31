@@ -1,0 +1,9 @@
+{
+    "authUrl": "token/",
+    "authUser": "admin@geoapp.solutions",
+    "authPassword": "Geo@pp2022",
+    "clientId": "WhtXpPFTKdaoeNtHGgjOYZDU",
+    "clientSecret": "CK7rjcoZuj,KbnU1vf.4cWDIMEOIEv.nktWXbsuEhUPFp0rHIBATPsvIS2cbx_kQFDYsO0.orog88heOPb-u_dgmWxBTQBDb7,-ZrXl_ZCRoYRa8AnZs,hK371as87fq",
+    "secureConnectBundle": "secure-connect-geodb-dev.zip",
+    "defaultDatabase": "geoapp_dev"
+}

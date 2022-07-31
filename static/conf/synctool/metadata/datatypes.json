@@ -1,0 +1,118 @@
+{   
+	"library.location":{
+		"keyspace": "library",
+        "name": "location",
+        "fields": [
+			{
+				"name": "latitude",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "longitude",
+				"typeDefinition": "text"
+			}		
+		],
+		"creation_order": 1,
+		"deletion_order": 2
+	},
+    "library.address": {
+        "keyspace": "library",
+        "name": "address",
+        "fields": [
+			{
+				"name": "country_code",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "city",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "zip_code",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "state",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "location",
+				"typeDefinition": "frozen<location>"
+			}
+		],
+		"creation_order": 2,
+		"deletion_order": 1
+    },
+	"user.location":{
+		"keyspace": "user",
+        "name": "location",
+        "fields": [
+			{
+				"name": "latitude",
+				"typeDefinition": "text"
+			},
+			{
+				"name": "longitude",
+				"typeDefinition": "text"
+			}		
+		],
+		"creation_order": 1,
+		"deletion_order": 1
+	},
+    "user.app_fields":{
+        "keyspace": "user",
+        "name": "app_fields",
+        "fields": [
+			{
+				"name": "created_user_id",
+				"typeDefinition": "uuid"
+			},
+			{
+				"name": "created_datetime",
+				"typeDefinition": "timestamp"
+			},
+			{
+				"name": "modified_user_id",
+				"typeDefinition": "uuid"
+			},
+			{
+				"name": "modified_datetime",
+				"typeDefinition": "timestamp"
+			},
+			{
+				"name": "is_deleted",
+				"typeDefinition": "boolean"
+			}
+		],
+		"creation_order": 1,
+		"deletion_order": 1
+    },
+    "library.app_fields": {
+        "keyspace": "library",
+        "name": "app_fields",
+        "fields": [
+			{
+				"name": "created_user_id",
+				"typeDefinition": "uuid"
+			},
+			{
+				"name": "created_datetime",
+				"typeDefinition": "timestamp"
+			},
+			{
+				"name": "modified_user_id",
+				"typeDefinition": "uuid"
+			},
+			{
+				"name": "modified_datetime",
+				"typeDefinition": "timestamp"
+			},
+			{
+				"name": "is_deleted",
+				"typeDefinition": "boolean"
+			}
+		],
+		"creation_order": 1,
+		"deletion_order": 1
+    }
+}

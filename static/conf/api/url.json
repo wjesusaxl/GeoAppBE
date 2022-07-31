@@ -1,8 +1,0 @@
-{
-    "geodb":{
-        "dbID": "709f9abc-2221-4676-887f-5f2b069ea35d",
-        "dbRegion": "us-east1",
-        "dbKeyspace": "geodb_dev",
-        "dbApplicationToken": "AstraCS:TzTcceRYpkMAFuqogFBLFHic:e0a1a024b94ee10c33a833580efb4d71e91148de0c4708089b8f075e0eaf8552"
-    }
-}

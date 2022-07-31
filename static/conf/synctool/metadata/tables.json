@@ -1,0 +1,184 @@
+{
+    "company": {        
+        "keyspace": "library",
+        "name": "company",        
+        "columnDefinitions": [
+            {
+                "name": "id",
+                "typeDefinition": "uuid"
+            },
+            {
+                "name": "code",
+                "typeDefinition": "text"
+            },
+            {
+                "name": "contact_name",
+                "typeDefinition": "text"
+            },
+            {
+                "name": "contact_phone_number",
+                "typeDefinition": "text"
+            },		
+            {
+                "name": "is_active",
+                "typeDefinition": "boolean"
+            },
+            {
+                "name": "name",
+                "typeDefinition": "text"
+            },
+            {
+                "name": "main_address",
+                "typeDefinition": "address"
+            },
+            {
+                "name": "application_fields",
+                "typeDefinition": "app_fields"
+            }
+        ],
+        "primaryKey": {
+            "partitionKey": [
+                "id"
+            ]
+        },
+        "tableOptions": {
+            "defaultTimeToLive": 0
+        },        
+		"creation_order": 1,
+		"deletion_order": 1
+    },
+    "project": {
+        "name": "project",
+        "keyspace": "library",
+        "columnDefinitions": [
+            {
+                "name": "id",
+                "typeDefinition": "uuid",
+                "static": false
+            },
+            {
+                "name": "code",
+                "typeDefinition": "text",
+                "static": false
+            },
+            {
+                "name": "company_id",
+                "typeDefinition": "uuid",
+                "static": false
+            },
+            {
+                "name": "contact_name",
+                "typeDefinition": "text",
+                "static": false
+            },
+            {
+                "name": "contact_phone_number",
+                "typeDefinition": "text",
+                "static": false
+            },		
+            {
+                "name": "is_active",
+                "typeDefinition": "boolean",
+                "static": false
+            },
+            {
+                "name": "address",
+                "typeDefinition": "address",
+                "static": false
+            },
+            {
+                "name": "name",
+                "typeDefinition": "text",
+                "static": false
+            },
+            {
+                "name": "application_fields",
+                "typeDefinition": "app_fields",
+                "static": false
+            }
+        ],
+        "primaryKey": {
+            "partitionKey": [
+                "id"
+            ]
+        },        
+		"creation_order": 1,
+		"deletion_order": 1
+    },
+    "user-project":{
+        "name": "user_project",
+        "keyspace": "user",
+        "columnDefinitions": [
+            {
+                "name": "id",
+                "typeDefinition": "uuid",
+                "static": false
+            },
+            {
+                "name": "user_id",
+                "typeDefinition": "uuid",
+                "static": false
+            },
+            {
+                "name": "project_id",
+                "typeDefinition": "uuid",
+                "static": false
+            },		
+            {
+                "name": "application_fields",
+                "typeDefinition": "app_fields",
+                "static": false
+            }
+        ],
+        "primaryKey": {
+            "partitionKey": [
+                "id"
+            ]
+        },        
+		"creation_order": 1,
+		"deletion_order": 1
+    },
+    "user":{
+        "name": "user",
+        "keyspace": "user",
+        "columnDefinitions": [
+            {
+                "name": "id",
+                "typeDefinition": "uuid",
+                "static": false
+            },
+            {
+                "name": "username",
+                "typeDefinition": "text",
+                "static": false
+            },
+            {
+                "name": "email",
+                "typeDefinition": "text",
+                "static": false
+            },
+            {
+                "name": "company_id",
+                "typeDefinition": "uuid",
+                "static": false
+            },
+            {
+                "name": "is_active",
+                "typeDefinition": "boolean",
+                "static": false
+            },
+            {
+                "name": "application_fields",
+                "typeDefinition": "app_fields",
+                "static": false
+            }
+        ],
+        "primaryKey": {
+            "partitionKey": [
+                "id"
+            ]
+        },        
+		"creation_order": 1,
+		"deletion_order": 1
+    }
+}

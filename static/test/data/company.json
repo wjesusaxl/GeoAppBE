@@ -1,0 +1,62 @@
+[
+    {
+      "id": "9371f574-37f3-4f1f-b99c-e2a0593939b9",
+      "application_fields": {
+         "created_user_id": "dcb0791e-fd4e-11ec-a49c-0c9d92c93651",
+         "created_datetime": "2022-07-13T19:35:00Z",
+         "is_deleted": false
+      },
+      "code": "FCB",
+      "name": "FC Barcelona",
+      "contact_name": "Joan Laporta",
+      "contact_phone_number": "+34902189900",
+      "is_active": true,
+      "main_address": {
+         "country_code": "ES",
+         "city": "Barcelona",
+         "zip_code": "45657",
+         "state": "Catalunya",
+         "location": "Latitude:34.12331,longitude:42.21341"
+      }
+   },
+    {
+      "id": "9f6bf57b-4ba5-4d9b-8ce7-a82dd2484b38",
+      "application_fields": {
+         "created_user_id": "dcb0791e-fd4e-11ec-a49c-0c9d92c93651",
+         "created_datetime": "2022-07-13T19:36:00Z",
+         "is_deleted": false
+      },
+      "code": "SCP",
+      "name": "Sporting Cristal",
+      "contact_name": "Julinho Peru",
+      "contact_phone_number": "+51956654789",
+      "is_active": true,
+      "main_address": {
+         "country_code": "PE",
+         "city": "Huancayo",
+         "zip_code": "80452",
+         "state": "Huancayo",
+         "location": "Latitude:34.12331,longitude:42.21341"
+      }
+   },
+    {
+      "id": "7d179ed2-085b-4474-a746-2fcf0979a862",
+      "application_fields": {
+         "created_user_id": "dcb0791e-fd4e-11ec-a49c-0c9d92c93651",
+         "created_datetime": "2022-07-13T19:38:00Z",
+         "is_deleted": false
+      },
+      "code": "BNB",
+      "name": "Air Bib",
+      "contact_name": "Johan Pazos",
+      "contact_phone_number": "+551232456570",
+      "is_active": true,
+      "main_address": {
+         "country_code": "BR",
+         "city": "Pernambuco",
+         "zip_code": "65986",
+         "state": "Pernambuco",
+         "location": "Latitude:34.12331,longitude:42.21341"
+      }
+   }
+   ]

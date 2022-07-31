@@ -1,0 +1,22 @@
+{    
+    "drop-tables": {
+        "label": "drop tables",
+        "checked": true,
+        "path" : "task/table/drop/__all__"
+    },
+    "drop-data-types": {
+        "label": "drop data types",
+        "checked": true,
+        "path" : "task/datatype/drop/__all__"
+    },
+    "create-data-types": {
+        "label": "create data types",
+        "checked": true,
+        "path" : "task/datatype/create/__all__"
+    },
+    "create-tables": {
+        "label": "create tables",
+        "checked": true,
+        "path" : "task/table/create/__all__"
+    }
+}

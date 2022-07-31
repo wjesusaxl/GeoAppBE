@@ -19,64 +19,95 @@ div.container.main section.loading-container {
   grid-template-columns: auto;
   margin: 1rem 0;
   grid-template-columns: 27.5vw auto;
-  grid-template-rows: auto 3rem;
   grid-row-gap: 1rem; }
 
-.container.main section.loading-container .model-container {
+.container.main section.loading-container .task-container {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 2rem auto;
   border: solid 5px #555555;
-  grid-row: 1;
   padding: 1rem;
   grid-row-gap: 1rem;
   height: 100%; }
 
-div.container.main section.loading-container .model-container .title {
+.container.main section.loading-container .task-container .task-category {
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 1rem;
+  height: fit-content; }
+
+div.container.main section.loading-container .task-container .task-category .title {
   display: grid;
   grid-template-columns: auto;
   height: fit-content; }
-  div.container.main section.loading-container .model-container .title h2 {
+  div.container.main section.loading-container .task-container .task-category .title h2 {
     color: #555555;
     -webkit-textfill-color: #555555; }
 
-.container.main section.loading-container .model-container .model-list {
+div.container.main section.loading-container .task-container .task-category .task-list {
   display: grid;
-  grid-template-columns: auto; }
+  grid-template-columns: auto;
+  grid-row-gap: .25rem; }
 
-.container.main section.loading-container .model-container .model-list .model {
+.container.main section.loading-container .task-container .task-category .task-list .task {
   display: grid;
   align-content: space-between;
   width: 100%;
   grid-template-columns: auto auto; }
-  .container.main section.loading-container .model-container .model-list .model span {
+  .container.main section.loading-container .task-container .task-category .task-list .task span {
     display: block; }
-  .container.main section.loading-container .model-container .model-list .model label {
-    display: block; }
-    .container.main section.loading-container .model-container .model-list .model label svg.check {
+  .container.main section.loading-container .task-container .task-category .task-list .task label {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 0; }
+    .container.main section.loading-container .task-container .task-category .task-list .task label svg.check {
       display: block;
       height: 1.5rem;
       margin-left: auto; }
-      .container.main section.loading-container .model-container .model-list .model label svg.check path {
-        fill: #333; }
-        .container.main section.loading-container .model-container .model-list .model label svg.check path.check-fill {
+      .container.main section.loading-container .task-container .task-category .task-list .task label svg.check path {
+        fill: #DC6016; }
+        .container.main section.loading-container .task-container .task-category .task-list .task label svg.check path.check-fill {
           fill: #FFF;
           transition: all .3s ease-in-out; }
-      .container.main section.loading-container .model-container .model-list .model label svg.check:hover {
+      .container.main section.loading-container .task-container .task-category .task-list .task label svg.check:hover {
         cursor: pointer; }
-  .container.main section.loading-container .model-container .model-list .model input.check-model {
+  .container.main section.loading-container .task-container .task-category .task-list .task input.check-task {
     display: none; }
-    .container.main section.loading-container .model-container .model-list .model input.check-model:checked ~ label svg.check path.check-fill {
-      fill: #333;
+    .container.main section.loading-container .task-container .task-category .task-list .task input.check-task:checked ~ label svg.check path.check-fill {
+      fill: #DC6016;
+      transition: all .5s ease-in-out; }
+
+.container.main section.loading-container .task-container .task-category .task-list .model {
+  display: grid;
+  align-content: space-between;
+  width: 100%;
+  grid-template-columns: auto auto; }
+  .container.main section.loading-container .task-container .task-category .task-list .model span {
+    display: block; }
+  .container.main section.loading-container .task-container .task-category .task-list .model label {
+    display: block; }
+    .container.main section.loading-container .task-container .task-category .task-list .model label svg.check {
+      display: block;
+      height: 1.5rem;
+      margin-left: auto; }
+      .container.main section.loading-container .task-container .task-category .task-list .model label svg.check path {
+        fill: #DC6016; }
+        .container.main section.loading-container .task-container .task-category .task-list .model label svg.check path.check-fill {
+          fill: #FFF;
+          transition: all .3s ease-in-out; }
+      .container.main section.loading-container .task-container .task-category .task-list .model label svg.check:hover {
+        cursor: pointer; }
+  .container.main section.loading-container .task-container .task-category .task-list .model input.check-model {
+    display: none; }
+    .container.main section.loading-container .task-container .task-category .task-list .model input.check-model:checked ~ label svg.check path.check-fill {
+      fill: #DC6016;
       transition: all .5s ease-in-out; }
 
 div.container.main section.loading-container .action-list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  grid-row: 2;
-  width: 100%;
-  height: fit-content;
+  justify-content: space-around;
   align-items: end; }
 
 div.container.main section.loading-container .action-list .action {
@@ -109,7 +140,6 @@ div.container.main section.loading-container .action-list .action {
   display: grid;
   grid-template-columns: auto;
   border: solid 5px #555555;
-  grid-row: 1/ spam 2;
   padding: .5rem;
   min-height: 60vh; }
 
