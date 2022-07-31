@@ -130,6 +130,28 @@ Control.ca-list
 Control.ca-bundle 
 Control.system-ca-bundle 
 GitHub.sublime-settings 
+config/__pycache__
+config/migrations
+config/migrations/__pycache__
+api/__pycache__
+api/api/__pycache__
+
+drillhole/__pycache__
+drillhole/migrations
+drillhole/migrations/__pycache__
+functional/__pycache__
+functional/migrations
+functional/migrations/__pycache__
+lib/__pycache__
+lib/migrations
+lib/migrations/__pycache__
+metadata/__pycache__
+metadata/migrations
+metadata/migrations/__pycache__
+view/__pycache__
+view/migrations
+view/migrations/__pycache__
+
 
 # Visual Studio Code # 
 .vscode/* 
