@@ -4,7 +4,7 @@ from view.models import View, EntityView, ColumnView, Dictionary, Filter
 from metadata.models import DataType,Entity,Rule,Column,Relation,ConditionRelation,Constraint,EntityType
 from functional.models import Company, StatusProject, Project, Role, Team
 from config.models import Config
-from lib.models import AlterationCode, AlterationStyle, ColourCode, ColourTone, DHSurveyMethod, Datum, GeotHardness, GeotMatrixType, GeotShape, GeotStrength, HoleStatus, HoleType, Intensity, Labor, LithologyCode, LithologyGrainSize, LithologyTexture, LithologyUnit, MineralCode, MineralStyle, MineralZone, MineralFill, Oxidation, QCCategory, RockMode, SGMethod, SampleCategory, SampleCondition, SampleMethod, SampleType, Stratigraphy, StructFillTexture, StructFillType, StructName, StructShape, StructRoughness, StructFillThickness, StructType, StructWallRockCompetency, Trench, WorkArea, SpecGravMethod
+from libr.models import AlterationCode, AlterationStyle, ColourCode, ColourTone, DHSurveyMethod, Datum, GeotHardness, GeotMatrixType, GeotShape, GeotStrength, HoleStatus, HoleType, Intensity, Labor, LithologyCode, LithologyGrainSize, LithologyTexture, LithologyUnit, MineralCode, MineralStyle, MineralZone, MineralFill, Oxidation, QCCategory, RockMode, SGMethod, SampleCategory, SampleCondition, SampleMethod, SampleType, Stratigraphy, StructFillTexture, StructFillType, StructName, StructShape, StructRoughness, StructFillThickness, StructType, StructWallRockCompetency, Trench, WorkArea, SpecGravMethod
 from drillhole.models import Collar, Survey, GeoTechDetail, Lithology, GeoTech, Alteration, Sample, SpecificGravity, Mineral, SampleQC
 from .forms import CustomUserCreationForm
 from django.contrib.auth.admin import UserAdmin

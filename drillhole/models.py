@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from functional.models import Company, Project  
-from lib.models import *  
+from libr.models import *  
 from user.models import User  
 
 class Collar(models.Model):

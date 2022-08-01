@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'functional',
     'metadata',    
     'config',
-    'lib',
+    'libr',
     'drillhole',    
     'user',
     'view',
